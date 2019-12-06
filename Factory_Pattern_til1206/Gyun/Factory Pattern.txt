@@ -1,0 +1,136 @@
+객체지향 클래스 생성 패턴
+
+자식(하위) 클래스가 어떤 객체를 생성할지 결정
+
+부모(상위) 클래스 코드에 생성되는 클래스 이름을 감추기 위한 방법으로 사용
+
+객체 생성을 클래스에 따라서 하지않고 팩토리클래스에서 객체를 생성하도록 하는 방식
+
+팩토리라는 말 그대로 객체를 찍어내는 공장이여~
+
+가장 중요한것은 결합도를 낮추고 높은 응집도를 갖춰 유지보수가 쉽도록 함 + 확장에 대해서는 열려있고 변경에 대해서는 닫혀 있어야 한다
+
+
+일반 팩토리 패턴 디자인에서는 extends 상속관계로 처리하는듯?
+
+대표적으로 M 나사를 제조하는 Factory 를 예를 들겠습니다???
+Creator 클래스에는
+1. M Series Screw 업체 본사 (Alpha라는 업체에로 부터 나사 납품 요청이 왔다! => 그쪽으로 납품해주세요 라고 공장들에게 요청만 함.)
+							Alpha 라는 업체는 강성과 강도가 뛰어는 M12 볼트를 쓴다. 하지만 본사는 그것을 모르고 공장에서 알고 있다.
+ㄴ	1.1 M나사업체 1번공장 (강성, 강도가 뛰어난 나사를 주로 만듦)
+		// M8, M10, M12 나사 생산(객체 생성 후 리턴으로 생성된 객체 반환)
+ㄴ	1.2 M나사업체 2번공장 (강성, 강도가 일반적인 나사를 주로 만듦)
+		// M8, M10, M12 나사 생산(객체 생성)
+
+Product 클래스에는
+2. M Screw Series 추상 클래스 (규격이 있음 M5, M6, M7... 그리고 강도, 나사 길이... 등등)
+ㄴ	2.1 M8	extemds M Series Screw
+ㄴ	2.2 M10 extemds M Series Screw
+ㄴ	2.3 M12 extemds M Series Screw
+
+따라서 하위 클래스에서 어떤 클래스를 만들지 결정하는것이죠?
+1번공장, 2번공장에서 알아서 알아듣고 선택해서 제품을 생산하는것이죠?
+
+
+// 본사에서의 주문
+abstract class Header {
+	Screw orderScrew (String name) {		무슨 제품이 들어 올지 모름
+		Screw screw;
+
+		screw = manufScrew(name);
+
+		screw.packing();		제작된 나사를 보냄
+
+		return screw;
+	}
+}
+
+// Premium Screw Factory
+public class PremiumScrewFactory extends Header {
+	
+	@Override
+	Screw ManufScrew (String name) {
+		Screw screw = null;
+
+		if (name.equals("M12")) {
+			return new PrimiumM12();
+		} else if (name.equals("M10")) {
+			return new PrimiumM10();
+		} else if (name.equals("8")) {
+			return new PrimiumM8();
+		} else {
+			return null;
+		}
+	}
+}
+
+// Noraml Screw Factory
+public class NormalScrewFactory extends Header {
+	
+	@Override
+	Screw ManufScrew (String name) {
+		Screw screw = null;
+
+		if (name.equals("M12")) {
+			return new NoramlM12();
+		} else if (name.equals("M10")) {
+			return new NoramlM10();
+		} else if (name.equals("8")) {
+			return new NoramlM8();
+		} else {
+			return null;
+		}
+	}
+}
+
+
+// M Series Screw
+abstract class Mseires {
+	String material;
+
+	void packing () {
+		System.out.println("M series 나사를 포장중...")
+	}
+}
+
+// Premiun M12 Screw
+class PremiumM12 extneds Mseries {
+	public PremiumM12() {
+		material = "W";
+	}
+}
+
+// Premiun M10 Screw
+class PremiumM10 extneds Mseries {
+	public PremiumM10() {
+		material = "W";
+	}
+}
+
+// Premiun M8 Screw
+class PremiumM8 extneds Mseries {
+	public PremiumM8() {
+		material = "W";
+	}
+}
+
+// Normal M12 Screw
+class NormalM12 extneds Mseries {
+	public NormalM12() {
+		material = "Fe";
+	}
+}
+
+// Normal M10 Screw
+class NormalM10 extneds Mseries {
+	public NormalM10() {
+		material = "Fe";
+	}
+}
+
+// Normal M8 Screw
+class NormalM8 extneds Mseries {
+	public NormalM8() {
+		material = "Fe";
+	}
+}
