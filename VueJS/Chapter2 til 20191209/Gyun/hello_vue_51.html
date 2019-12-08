@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="ok">v-if 조건으로 출력하기 </div>
+		<div v-show="ok">v-show 조건으로 출력하기</div>
+
+		<template v-if="ok">
+			<header>TITLE </header>
+			<div> 콘텐츠 </div>			
+		</template>
+
+		<div v-if="type === 'A'">
+			type는 A
+		</div>
+		<div v-else-if="type === 'B'">
+			type는 B
+		</div>
+		<div v-else >
+			모든 조건을 만족하지 않는 경우
+		</div>
+
+		<div v-if='loaded' key="content-visible">
+			content
+		</div>
+		<div v-else key="content-loading">
+			loading now ...
+		</div>
+
+		<ul>
+			<li v-for="item in list" v-bind:key="item.id" >
+				ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+			</li>
+		</ul>
+	</div>
+		
+	<script>
+		var app = new Vue({
+			el : '#app',
+			data : {
+				ok : true, // false
+				type : 'A', // 'B'
+				list : [
+				
+				]
+			}				
+		})
+
+	</script>
+</body>
+</html> 

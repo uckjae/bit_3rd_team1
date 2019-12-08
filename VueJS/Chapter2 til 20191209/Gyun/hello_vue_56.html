@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="item in list" 
+				v-bind:key="item.id"
+				v-bind:class="{ strong:item.hp > 300 }" >
+				ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+				<span v-if="item.hp > 300 "> 강하다!</span>
+			</li>
+		</ul>
+	</div>
+		
+	<script>
+		var app = new Vue({
+			el : '#app',
+			data : {
+				list : [
+					{ id : 1, name : '슬라임', hp : 100 },
+					{ id : 2, name : '고블린', hp : 200 },
+					{ id : 3, name : '드래곤', hp : 300 }
+				]
+			}				
+		})
+
+	</script>
+</body>
+</html> 
