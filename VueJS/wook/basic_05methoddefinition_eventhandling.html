@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .dropdown ul{
+            display:none;
+            list-style: none;
+            margin: 0;
+            border: 1px solid black;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .dropdown.on ul{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="app">
+    <img :id="`thumbnail_${id}`" v-bind:src="image">
+</div>-->
+<div id="app">
+    <button type="button" @click="btnClick">버튼</button>
+<div :class="[dropdown, toggle]"> <!--:style="[style, fontStyle]"-->
+    <ul>
+        <li><a href="#">메뉴1</a> </li>
+        <li><a href="#">메뉴2</a> </li>
+
+    </ul>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:"#app",
+        data(){
+            return{
+                id:1,
+                image:'https://picsum.photos/400/400/?image=353',
+                style: {
+                    background :'red'
+                },
+                fontStyle:{
+                    fontSize: '50px',
+                    fontFamily: 'dotum'
+                },
+                dropdown:'dropdown',
+                toggle:{
+                    on:false,
+
+                }
+            }
+        },
+        methods:{
+            btnClick(){
+                this.toggle.on = !this.toggle.on;
+            }
+        }
+    })
+</script>
+</body>
+</html>
