@@ -1,5 +1,3 @@
-import java.util.Calendar;
-
 import abs.Button;
 import abs.GuiFactory;
 import abs.TextArea;

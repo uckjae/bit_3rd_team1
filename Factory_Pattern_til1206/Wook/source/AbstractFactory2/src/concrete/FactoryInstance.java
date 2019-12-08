@@ -5,6 +5,7 @@ import abs.GuiFactory;
 import abs.TextArea;
 
 public class FactoryInstance {
+	
 	public static GuiFactory getGuiFactory() {
 		
 		switch(getOsCode()) {
@@ -16,7 +17,7 @@ public class FactoryInstance {
 		
 		return null;
 	}
-}	
+}
 	
 
 
