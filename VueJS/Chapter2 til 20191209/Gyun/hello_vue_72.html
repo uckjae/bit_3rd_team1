@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+</head>
+<body>
+	<div id="app">
+		<a v-bind:href = "url" v-pre>
+			Hello {{ message }}
+		</a>
+		<br>
+
+		<a v-bind:href = "url" v-once>
+			Hello {{ message }}
+		</a>
+		<br>
+
+		<span v-text="message" ></span>
+		<span>{{ message }} </span>
+
+		<span v-html="message"></span>
+	</div>
+		
+	<script>
+		var app = new Vue ({
+			el : '#app',
+			data : {
+				url : 'https://www.naver.com',
+				message : 'Hello <strong>Vue.js</strong>'
+			}
+		})
+	</script>
+</body>
+</html> 

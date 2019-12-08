@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+	<style>
+		.v-enter-active, .v-leave-active {
+			transition : opacity 1s;
+		}
+		.v-enter, .v-leave-to {
+			opacity: 0;
+		}
+	</style>
+</head>
+	<script>
+		var app = new Vue ({
+			el : '#app',
+			methods : {
+				handleClick:function(event) {
+					alert(event.target)
+				}
+			}
+			data : {
+				show : true
+			}
+		})
+	</script>
+<body>
+	<div id="app">
+
+		<button v-on:click="handleClick">Click</button>
+
+		<button v-on:click="show=!show" > 변경하기 </button>
+		<transition>
+			<p v-if="show"> Hello Vue.js </p>
+		</transition>
+
+	</div>
+	
+</body>
+</html>

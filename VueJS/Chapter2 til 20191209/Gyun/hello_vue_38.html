@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+</head>
+<body>
+	<div id="app">
+		<p> {{ message.value }} </p>
+		<p> {{ message.value.length}} </p>
+		<p> {{ list[2] }} </p>
+		<p>	{{ list[num] }} </p>
+		<p> {{ message.value.length >=10 ? '10글자 이상' : '10글자 미만'}}
+		<br>
+		
+		<input type="text" :value="message.value">
+		<input type="text" v-bind:value="message.value">
+
+		<div v-bind:text-content.prop="message1">...</div>
+		<div v-bind:scroll-top.prop="scroll">...</div>
+		
+		<pre> {{$data}} </pre>
+	</div>
+		
+	
+	<script>
+		
+		var app = new Vue({
+			el : '#app',
+			data : {
+				message : {
+					value : 'Hello World!'
+				},
+				list : ['사과', '바나나', '딸기'],
+				num : 1,
+				message1 : 'Hello Vue.js',
+				scroll : 0
+			},
+			mounted : function () {
+				this.scroll = 100
+			}
+		})
+
+	</script>
+</body>
+</html>

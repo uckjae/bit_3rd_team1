@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+</head>
+<body>
+	<div id="app">
+		<h1> {{ practice }} </h1>
+
+		<ol>
+			<li v-for="item in list"> {{ item }} </li>
+		</ol>
+
+		<p> {{ message }} </p>
+		<input v-model.number = "message">
+
+		<p v-if="show">Hello Vue.js</p>
+
+	</div>
+	
+	
+	<script>
+		var app = new Vue({
+			el : '#app',
+			data : {
+				list : ['사과', '바나나', '딸기'],
+				practice : 'Hello vue.js!',
+				message : '초기 메시지',
+				show : false,
+			},
+			created : function () {
+				console.log('created')
+			}
+			
+			
+		})
+		console.log(app.practice)
+		app.list.push('오렌지')
+		app.show = true
+	</script>
+</body>
+</html>
