@@ -1,3 +1,4 @@
+/*
 console.log("Hello Node!");
 
 var dog = { name: "emy", age:10};
@@ -16,4 +17,7 @@ var print = function(){
 
 print();
 
-setTimeout(print,5000);
+setTimeout(print,5000);*/
+
+var food = require('./food');
+food.Sausage();
