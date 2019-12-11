@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+  include nav/header.jade
+
+  h1= title
+  p Welcome to #{title}
+  p Express 로 만든 첫 페이지인데 무슨 jade는 문법이야 뭐여
+  p #{name} 은 즐겁답니다?
+
+  ul
+    -for (var i=0; i<3; i++)
+     li rire
+    li si bel homme
+
+  h3 #{jdata.workers}
+  h2 #{jdata2.employees}
+
+  ul
+    each fn in jdata2.employees
+      li= fn.firstName
+
+  ul
+    each ln in jdata.employees
+      li= ln.lastName
+  
