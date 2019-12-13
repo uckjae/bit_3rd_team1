@@ -2,3 +2,10 @@ NodeJS_ch8/wook/HelloExpress/.idea/
 /.metadata/
 *.class
 NodeJS/lecture_inflearn/wook/.idea/
+AOP/.settings/
+*.classpath
+*.project
+SpringSTS/Hyelee/Team2_EmpManager_lee/.settings/
+*.MF
+*.properties
+*.yml
