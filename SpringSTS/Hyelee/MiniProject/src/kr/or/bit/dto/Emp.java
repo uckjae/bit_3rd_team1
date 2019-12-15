@@ -2,6 +2,7 @@ package kr.or.bit.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class Emp {
@@ -16,18 +17,10 @@ public class Emp {
 	private String imagefilename;
 	private CommonsMultipartFile file;
 	
-	
-	//파일 업로드 구현
-	public CommonsMultipartFile getFile() {
-		return file;
-	}
-
-	public void setFile(CommonsMultipartFile file) {
-		this.file = file;
-	}
-
 	public Emp() { }
-
+	
+	
+	
 	public Emp(int empno, String ename, String job, int mgr, String hiredate, int sal, int comm, int deptno,
 			String imagefilename, CommonsMultipartFile file) {
 		super();
@@ -40,6 +33,17 @@ public class Emp {
 		this.comm = comm;
 		this.deptno = deptno;
 		this.imagefilename = imagefilename;
+		this.file = file;
+	}
+
+
+
+	//파일 업로드 구현
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(CommonsMultipartFile file) {
 		this.file = file;
 	}
 
@@ -115,6 +119,8 @@ public class Emp {
 		this.imagefilename = imagefilename;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Emp [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate=" + hiredate
@@ -122,7 +128,5 @@ public class Emp {
 				+ ", file=" + file + ", toString()=" + super.toString() + "]";
 	}
 
-	
-	
 	
 }

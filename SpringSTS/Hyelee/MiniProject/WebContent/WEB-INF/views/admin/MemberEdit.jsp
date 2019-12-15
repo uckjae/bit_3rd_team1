@@ -53,7 +53,7 @@
                             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form action="MemberEditOk.do" method="post">
+                                        <form action="MemberEditOk.do" method="post" enctype="multipart/form-data">
                                         	<div class="form-group">
                                                 		<div class="form-row">
                                                    			<div class="col-md-6">

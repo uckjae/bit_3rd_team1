@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertEmp" parameterType="kr.or.bit.dto.Emp">
 		 INSERT INTO 
-		 EMP(EMPNO, ENAME, JOB, MGR, SAL, COMM, DEPTNO, IMAGEFILENAME)
-		 VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{sal}, #{comm}, #{deptno}, #{imagefilename})
+		 EMP(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO, IMAGEFILENAME)
+		 VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno}, #{imagefilename})
 	</insert>
 	<!-- public Emp getEmpByEmpno(int no) -->
 	<select id="getEmpByEmpno" resultType="kr.or.bit.dto.Emp">
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	<update id="updateEmp" parameterType="kr.or.bit.dto.Emp">
 		UPDATE EMP 
-		SET ENAME=#{ename}, JOB=#{job}, MGR=#{mgr}, SAL=#{sal}, COMM=#{comm}, DEPTNO=#{deptno}
+		SET ENAME=#{ename}, JOB=#{job}, MGR=#{mgr}, HIREDATE=#{hiredate}, SAL=#{sal}, COMM=#{comm}, DEPTNO=#{deptno}, IMAGEFILENAME=#{imagefilename}
 		WHERE EMPNO=#{empno}
 	</update>
 	<!-- <select id="dataByYear" resultType="kr.or.bit.dto.chart.TotalSaleryChart">
