@@ -83,17 +83,7 @@
 	    		}
 	    	});
 	    	
-	    	$("#photo").change(function(){
-	    		var reader = new FileReader();
-
-	    	    reader.onload = function (e) {
-	    	        // get loaded data and render thumbnail.
-	    	        document.getElementById("viewPhoto").src = e.target.result;
-	    	    };
-
-	    	    // read the image file as a data URL.
-	    	    reader.readAsDataURL(this.files[0]);
-	    	});
+	    	
 	    	
 	    	$.ajax({
 	    		url:"GetJobRegister",
@@ -110,6 +100,23 @@
 	    		}
 	    	});
 	    }); */
+	    $(function(){
+
+	    	 $("#photo").change(function(){
+	     		var reader = new FileReader();
+
+	     	    reader.onload = function (e) {
+	     	        // get loaded data and render thumbnail.
+	     	        document.getElementById("viewPhoto").src = e.target.result;
+	     	    };
+
+	     	    // read the image file as a data URL.
+	     	    reader.readAsDataURL(this.files[0]);
+	     	});
+
+		    
+		    });
+	   
     </script>
 </head>
 

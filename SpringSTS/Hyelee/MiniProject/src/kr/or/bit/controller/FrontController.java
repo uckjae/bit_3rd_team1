@@ -77,25 +77,28 @@ public class FrontController {
 	//사원 등록 화면 처리
 	@RequestMapping(value="/Register.do", method=RequestMethod.POST)
 	public String register_submit(Emp emp, HttpServletRequest request) throws IOException {
-		System.out.println("empemp"+emp.toString());
-		CommonsMultipartFile imagefile = emp.getFile();
-		emp.setImagefilename(imagefile.getName());
-		
+		CommonsMultipartFile imagefile = emp.getFile();		
 		String filename=imagefile.getOriginalFilename();
-//		String path = request.getServletContext().getRealPath("/upload"); 
-//		//실제로 톰캣의 업로드 경로를 알아내기 위한 작업 그 실 경로를 알아내서 패스작아줌 
-//		
-//		String fpath = path + "//" + filename;   //파일명 경로??
-//		
-//		//파일쓰기 작업
-//		FileOutputStream fs = new FileOutputStream(fpath); // 없으면 거기다가 파일 생성함 
-//		fs.write(imagefile.getBytes());  
-//		fs.close();   
-			
+
+		
+		System.out.println("파일이름"+filename);
+		String path = request.getServletContext().getRealPath("/upload"); 
+		
+		String fpath = path + "\\" + filename;   //파일명 경로??
+		
+		//파일쓰기 작업
+		FileOutputStream fs = new FileOutputStream(fpath); // 없으면 거기다가 파일 생성함 
+		fs.write(imagefile.getBytes());  
+		fs.close();   
+
+		//DB에 파일 이름 저장
+		emp.setImagefilename(filename);
+
 		EmpDao empdao = sqlsession.getMapper(EmpDao.class); 
 		int result = empdao.insertEmp(emp); 
 		String view = ""; 
 		System.out.println("result" + result);
+		System.out.println("empemp"+emp.toString());
 		if(result > 0) {
 			view = "index.jsp";
 		}else {

@@ -63,7 +63,7 @@
                                                     		</div>
                                                     		<div class="col-md-6">
                                                         		<div class="form-label-group">
-                                                            		<input type="file" id="photo" name="imagefilename" class="form-control" accept="image/*">
+                                                            		<input type="file" id="photo" name="file" class="form-control" accept="image/*">
                                                             		<label for="photo">photo</label>
                                                         		</div>
                                                     		</div>
