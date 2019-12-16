@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+<!-- 
+	@Aspect 어노테이션이 있는 클래스를 자동으로 찾아서 설정해줌 
+	proxy를 두는 방식!
+	proxy : 핵심 기능을 수행하기 전과 후에 공통 기능을 수행할 때 
+			aspect가 곧바로 핵심 기능에서 실행되는 것이 아니라 proxy에서 공통 기능이 수행되도록 함
+			proxy는 핵심 기능을 수행하고 다시 돌아와서 공통 기능을 수행하는 로직을 거침
+-->
+<aop:aspectj-autoproxy/> 
+<bean id="logAop" class="AOP.LogAop"/>
+
+<bean id="myCat" class="AOP.Cats">
+	<property name="name" value="호랑이"></property>
+	<property name="age" value="1"></property>
+	<property name="color" value="yellow"></property>
+</bean>
+</beans>
