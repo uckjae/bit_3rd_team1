@@ -26,3 +26,10 @@ app.post('/email_post',function(req,res){
     res.render('email.ejs',req.body);
     //res.send("<h1>welcome "+req.body.email+"</h1>");
 });
+
+app.post('/ajax_send_email',function (req, res) {
+    console.log(req.body.email);
+    //check validation about input value => selsect db
+    var responsedata = {'result':'ok','email':req.body.email };
+    res.json(responsedata);
+});
